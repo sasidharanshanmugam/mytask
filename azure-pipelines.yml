@@ -48,5 +48,5 @@ steps:
 - task: WhiteSource@21
   inputs:
     cwd: '$(Build.ArtifactStagingDirectory)'
-    projectName: 'sasidharanshanmugam.mytask'
+    projectName: 'poc'
 
