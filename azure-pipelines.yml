@@ -44,4 +44,4 @@ steps:
     azureSubscription: 'sp'
     appType: 'webAppLinux'
     WebAppName: 'POCAppservice'
-    packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/*.zip'
