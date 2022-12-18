@@ -38,7 +38,7 @@ steps:
     artifactName: npm
   displayName: 'Publish npm artifact'
 
--stage: Deploy
+- stage: Deploy
   displayName: Deploy stage
   dependsOn: Build
   condition: succeeded()
