@@ -24,7 +24,7 @@ stages:
       inputs:
         sourceFolder: '$(Build.SourcesDirectory)'
         contents: '*.tgz' 
-        targetFolder: '$(Build.ArtifactStagingDirectory)'
+        targetFolder: '$(Build.Repository.LocalPath)'
       displayName: 'Copy npm package'
 
     - task: ArchiveFiles@2
