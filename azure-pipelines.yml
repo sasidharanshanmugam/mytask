@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- main
+- none
 stages:
 - stage: Build
   displayName: Build stage
@@ -20,11 +20,9 @@ stages:
       inputs:
        versionSpec: '10.x'
       displayName: 'Install Node.js'
-
-    
     - task: CopyFiles@2
       inputs:
-        sourceFolder: '$(Build.SourcesDirectory)/wwwroot'
+        sourceFolder: '$(Build.SourcesDirectory)/npm'
         contents: '*.tgz' 
         targetFolder: '$(Build.ArtifactStagingDirectory)/npm'
       displayName: 'Copy npm package'
