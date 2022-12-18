@@ -38,13 +38,29 @@ steps:
     artifactName: npm
   displayName: 'Publish npm artifact'
 
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'sp'
-    appType: 'webAppLinux'
-    WebAppName: 'POCAppservice'
-    packageForLinux: '$(Build.ArtifactStagingDirectory)/npm/'
+- stage: Deploy
+  displayName: Deploy stage
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+  - deployment: Deploy
+    displayName: Deploy
+    environment: main
+    pool:
+      name: veracicd01d
+      demands:
+       - agent.name -equals Linux
+    strategy:
+      runOnce:
+        deploy:
+          steps:  
+          - task: AzureRmWebAppDeployment@4
+            inputs:
+             ConnectionType: 'AzureRM'
+             azureSubscription: 'sp'
+             appType: 'webAppLinux'
+             WebAppName: 'POCAppservice'
+             packageForLinux: '$(Build.ArtifactStagingDirectory)/npm/'
 - task: WhiteSource@21
   inputs:
     cwd: '$(Build.ArtifactStagingDirectory)'
