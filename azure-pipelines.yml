@@ -22,9 +22,9 @@ stages:
       displayName: 'Install Node.js'
     - task: CopyFiles@2
       inputs:
-        SourceFolder: '$(Build.SourcesDirectory)/wwwroot'
+        SourceFolder: '$(Build.SourcesDirectory)'
         Contents: '**'
-        TargetFolder: '$(Build.SourcesDirectory)/dist'
+        TargetFolder: '$(Build.SourcesDirectory)'
       displayName: 'Copy npm package'
 
     - task: ArchiveFiles@2
