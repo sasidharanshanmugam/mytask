@@ -32,7 +32,7 @@ stages:
         rootFolderOrFile: '$(Build.Repository.LocalPath)'
         includeRootFolder: false
         archiveType: 'zip'
-        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+        archiveFile: '$(Build.Repository.LocalPath)/$(Build.BuildId).zip'
         replaceExistingArchive: true
     - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
       artifact: drop
