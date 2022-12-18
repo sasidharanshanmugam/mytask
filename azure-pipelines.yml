@@ -22,14 +22,14 @@ stages:
       displayName: 'Install Node.js'
     - task: CopyFiles@2
       inputs:
-        sourceFolder: '$(Build.SourcesDirectory)'
+        sourceFolder: '$(Build.SourcesDirectory)/root'
         contents: '*.tgz' 
-        targetFolder: '$(Build.ArtifactStagingDirectory)'
+        targetFolder: '$(Build.ArtifactStagingDirectory)/dist'
       displayName: 'Copy npm package'
 
     - task: ArchiveFiles@2
       inputs:
-        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/dist'
         includeRootFolder: false
         archiveType: 'zip'
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
