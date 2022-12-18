@@ -37,6 +37,7 @@ steps:
     targetPath: '$(Build.ArtifactStagingDirectory)/npm'
     artifactName: npm
   displayName: 'Publish npm artifact'
+
  - stage: Deploy
    displayName: Deploy stage
    condition: succeeded()
@@ -45,7 +46,7 @@ steps:
     displayName: Deploy
     environment: main
     pool:
-      name: veracicd01d
+      name: Linux
       demands:
        - agent.name -equals Linux
     strategy:
