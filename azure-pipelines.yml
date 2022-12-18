@@ -38,9 +38,10 @@ steps:
     artifactName: npm
   displayName: 'Publish npm artifact'
 
- - stage: Deploy
-   displayName: Deploy stage
-   condition: succeeded()
+-stage: Deploy
+  displayName: Deploy stage
+  dependsOn: Build
+  condition: succeeded()
   jobs:
   - deployment: Deploy
     displayName: Deploy
@@ -52,7 +53,7 @@ steps:
     strategy:
       runOnce:
         deploy:
-          steps:  
+          steps:           
           - task: AzureRmWebAppDeployment@4
             inputs:
              ConnectionType: 'AzureRM'
