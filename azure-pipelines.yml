@@ -29,8 +29,6 @@ stages:
         targetFolder: $(Build.ArtifactStagingDirectory)/npm
       displayName: 'Copy npm package'
 
-
-
     - task: PublishPipelineArtifact@1
       inputs:
        targetPath: '$(Build.ArtifactStagingDirectory)/npm'
