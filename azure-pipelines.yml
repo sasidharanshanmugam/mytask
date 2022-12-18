@@ -37,7 +37,6 @@ steps:
     targetPath: '$(Build.ArtifactStagingDirectory)/npm'
     artifactName: npm
   displayName: 'Publish npm artifact'
-
  - stage: Deploy
    displayName: Deploy stage
    condition: succeeded()
