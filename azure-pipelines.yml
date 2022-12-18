@@ -59,8 +59,7 @@ stages:
              appType: 'webAppLinux'
              WebAppName: 'POCAppservice'
              packageForLinux: '$(Build.ArtifactStagingDirectory)/npm/'
-- task: WhiteSource@21
-  inputs:
-    cwd: '$(Build.ArtifactStagingDirectory)'
-    projectName: 'poc'
-
+          - task: WhiteSource@21
+            inputs:
+             cwd: '$(System.DefaultWorkingDirectory)'
+             projectName: 'poc'
