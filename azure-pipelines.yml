@@ -29,11 +29,13 @@ stages:
         targetFolder: '$(Build.ArtifactStagingDirectory)/npm'
       displayName: 'Copy npm package'
 
-    - task: PublishPipelineArtifact@1
+    - task: ArchiveFiles@2
       inputs:
-       targetPath: '$(Build.ArtifactStagingDirectory)/npm'
-       artifactName: npm
-      displayName: 'Publish npm artifact'
+        rootFolderOrFile: '$(Build.BinariesDirectory)'
+        includeRootFolder: true
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+        replaceExistingArchive: true
 
 - stage: Deploy
   displayName: Deploy stage
