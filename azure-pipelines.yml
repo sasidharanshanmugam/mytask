@@ -1,10 +1,6 @@
-# Node.js
-# Build a general Node.js project with npm.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
-
 trigger:
 - none
+
 stages:
 - stage: Build
   displayName: Build stage
@@ -20,6 +16,7 @@ stages:
       inputs:
        versionSpec: '10.x'
       displayName: 'Install Node.js'
+  
     - task: CopyFiles@2
       inputs:
         SourceFolder: '$(Build.SourcesDirectory)'
