@@ -24,12 +24,12 @@ stages:
       inputs:
         SourceFolder: '$(Build.SourcesDirectory)'
         Contents: '**'
-        TargetFolder: '$(Build.SourcesDirectory)'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
       displayName: 'Copy npm package'
 
     - task: ArchiveFiles@2
       inputs:
-        rootFolderOrFile: '$(Build.SourcesDirectory)'
+        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
         includeRootFolder: false
         archiveType: 'zip'
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
