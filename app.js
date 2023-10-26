@@ -1,35 +1,24 @@
-const mysql = require('mysql');
-
-// Database configuration
-const dbConfig = {
-  host: 'mysql',
-  user: 'root',
-  password: 'secret',
-  database: 'todos',
-};
-
-// Create a connection to the database
-const connection = mysql.createConnection(dbConfig);
-
-// Attempt to connect to the database
-connection.connect((err) => {
-  if (err) {
-    console.error('Error connecting to the database:', err);
-    return;
-  }
-
-  console.log('Connected to the database');
+var mysql = require('mysql');
+var express = require('express');
+ 
+var app = express();
+var port = process.env.PORT || 3000;
+ 
+app.get('/',function(req, res){
+   
+   let connectionOptions = {
+     host: process.env.MYSQL_HOST || 'localhost',
+     port: process.env.MYSQL_PORT || '3306',
+     user: process.env.MYSQL_USER || 'root',
+     password: process.env.MYSQL_PASS || 'root'
+   };
+ 
+   let connection = mysql.createConnection(connectionOptions);
+   if(!connection) res.send("Connection was not successful!");
+   res.send("Connection made successfully after auto build 2!")
 });
-
-// Close the database connection when your application is done
-connection.end();
-
-// Note: You should perform your database operations inside this callback
-
-// Handle any errors that occur during the connection
-connection.on('error', (err) => {
-  console.error('Database error:', err);
-  console.log('Database not connected');
+ 
+ 
+app.listen(port, function(){
+    console.log('Sample Node app listening on port ' + port);
 });
-
-
