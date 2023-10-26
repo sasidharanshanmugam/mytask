@@ -15,7 +15,7 @@ app.get('/',function(req, res){
  
    let connection = mysql.createConnection(connectionOptions);
    if(!connection) res.send("Connection was not successful!");
-   res.send("Connection made successfully after auto build 2!")
+   res.send("Connection made successfully after auto build !")
 });
  
  
